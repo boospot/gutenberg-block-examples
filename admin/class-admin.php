@@ -75,6 +75,8 @@ class Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+		wp_enqueue_style( 'ui-kit', 'https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css', array(), '3.6.16', 'all' );
+
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/admin.css', array(), $this->version, 'all' );
 
@@ -99,7 +101,12 @@ class Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'ui-kit', 'https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit.min.js', array(), '3.6.16', true );
+
+		// Ui-Kit Icons https://getuikit.com/docs/installation
+		wp_enqueue_script( 'ui-kit-icons', 'https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit-icons.min.js', array(), '3.6.16', true );
+
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, true );
 
 	}
 
