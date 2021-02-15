@@ -70,13 +70,52 @@ class Blocks {
 		$this->editor_style_handle  = 'gbe-block-editor-style';
 		$this->public_style_handle  = 'gbe-block-style';
 
+
+		add_filter( 'block_categories', array( $this, 'register_block_categories' ), 10, 2 );
 	}
+
+	/**
+	 * Add custom "UiKit" block category
+	 * @hooked block_categories
+	 * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/filters/block-filters/#managing-block-categories
+	 */
+	public function register_block_categories( $categories, $post ) {
+
+		// Plugin’s block category title and slug.
+		$block_category = array(
+			'title' => esc_html__( 'UiKit Components', 'gutenberg-block-examples' ),
+			'slug'  => 'uikit'
+		);
+		$category_slugs = wp_list_pluck( $categories, 'slug' );
+
+		if ( ! in_array( $block_category['slug'], $category_slugs ) ) {
+			$categories = array_merge(
+				$categories,
+				array(
+					array(
+						'title' => $block_category['title'],
+						// Required
+						'slug'  => $block_category['slug'],
+						// Required
+						'icon'  => 'screenoptions',
+						// Slug of a WordPress Dashicon or custom SVG
+					),
+				)
+			);
+		}
+
+
+		return $categories;
+
+	}
+
 
 	/**
 	 * Enqueue assets for Editor (admin) and Public (frontend) side
 	 * @hooked  enqueue_block_assets
 	 */
-	public function enqueue_block_assets() {
+	public
+	function enqueue_block_assets() {
 
 		$style_css = 'style-index.css';
 		wp_enqueue_style(
@@ -91,7 +130,10 @@ class Blocks {
 	/**
 	 * Get Build URL path
 	 */
-	public function get_build_url( $file_name_with_sub_dir ) {
+	public
+	function get_build_url(
+		$file_name_with_sub_dir
+	) {
 
 		return GBE_URL_PATH . trailingslashit( 'build' ) . $file_name_with_sub_dir;
 
@@ -100,7 +142,10 @@ class Blocks {
 	/**
 	 * Get Build Dir path
 	 */
-	public function get_build_dir( $file_name_with_sub_dir ) {
+	public
+	function get_build_dir(
+		$file_name_with_sub_dir
+	) {
 
 		return GBE_DIR_PATH . 'build' . DIRECTORY_SEPARATOR . $file_name_with_sub_dir;
 
@@ -110,7 +155,8 @@ class Blocks {
 	 * Enqueue CSS and JS assets for Editor
 	 * @hooked  enqueue_block_editor_assets
 	 */
-	public function enqueue_block_editor_assets() {
+	public
+	function enqueue_block_editor_assets() {
 
 		$script_asset_path = $this->get_build_dir( 'index.asset.php' );
 
@@ -170,6 +216,7 @@ class Blocks {
 		// Array of block created in this plugin.
 		$blocks = [
 			'gbe/message',
+			'gbe/card',
 		];
 
 		// Loop through $blocks and register each block with the same script and styles.

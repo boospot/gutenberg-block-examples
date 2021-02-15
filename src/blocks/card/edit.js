@@ -6,13 +6,18 @@ import {TextControl} from '@wordpress/components';
  */
 import {__} from '@wordpress/i18n';
 
+import classnames from 'classnames';
+
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import {useBlockProps} from '@wordpress/block-editor';
+import {
+    useBlockProps,
+    RichText
+} from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,16 +36,25 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit({attributes, className, setAttributes}) {
-    console.log(attributes);
+
     return (
-        <div className={'gbe-message-block'}>
-            <div className={className}>
-                <TextControl
-                    label={__('Message', 'gutenpride')}
-                    value={attributes.message}
-                    onChange={(val) => setAttributes({message: val})}
+        <div className={`${className} uk-card uk-card-default uk-card-body`}>
+            <h3 className="uk-card-title">
+                <RichText
+                    value={attributes.cardTitle}
+                    onChange={cardTitle => setAttributes({cardTitle})}
+                    placeholder={__('Card Title', 'gutenberg-block-examples')}
+                />
+            </h3>
+            <div className={"uk-card-description"}>
+                <RichText
+                    value={attributes.cardDescription}
+                    onChange={cardDescription => setAttributes({cardDescription})}
+                    placeholder={__('Card Description', 'gutenberg-block-examples')}
                 />
             </div>
         </div>
+
     );
 }
+
