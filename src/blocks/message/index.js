@@ -32,7 +32,7 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType( 'sgb/message', {
+registerBlockType( 'gbe/message', {
 	/**
 	 * @see https://make.wordpress.org/core/2020/11/18/block-api-version-2/
 	 */
@@ -42,7 +42,7 @@ registerBlockType( 'sgb/message', {
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
 	 */
-	title: __( 'Skeleton Message', 'plugin-text-domain' ),
+	title: __( 'Skeleton Message', 'gutenberg-block-examples' ),
 
 	/**
 	 * This is a short description for your block, can be translated with `i18n` functions.
@@ -50,7 +50,7 @@ registerBlockType( 'sgb/message', {
 	 */
 	description: __(
 		'Example block written with ESNext standard and JSX support – build step required.',
-		'plugin-text-domain'
+		'gutenberg-block-examples'
 	),
 
 	/**

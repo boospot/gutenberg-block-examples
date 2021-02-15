@@ -1,13 +1,13 @@
 <?php
 
-namespace Sgb;
+namespace GutenbergBlockExamples;
 // exit if file is called directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // if class already defined, bail out
-if ( class_exists( 'Sgb\Taxonomy' ) ) {
+if ( class_exists( 'GutenbergBlockExamples\Taxonomy' ) ) {
 	return;
 }
 
@@ -15,8 +15,8 @@ if ( class_exists( 'Sgb\Taxonomy' ) ) {
 /**
  * This class will create meta boxes for Taxonomies
  *
- * @package    Sgb
- * @subpackage Sgb/includes
+ * @package    GutenbergBlockExamples
+ * @subpackage GutenbergBlockExamples/includes
  * @author     Rao <raoabid491@gmail.com>
  */
 class Taxonomy {

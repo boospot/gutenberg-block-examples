@@ -11,10 +11,10 @@
  *
  * @link              https://booskills.com/rao
  * @since             1.0.0
- * @package           Sgb
+ * @package           GutenbergBlockExamples
  *
  * @wordpress-plugin
- * Plugin Name:       Sgb
+ * Plugin Name:       Gutenberg Block Examples
  * Plugin URI:        https://boospot.com/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Requires PHP:      7.0
@@ -25,7 +25,7 @@
  * Author URI:        https://booskills.com/rao
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       plugin-text-domain
+ * Text Domain:       gutenberg-block-examples
  * Domain Path:       /languages
  */
 
@@ -39,9 +39,9 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'SGB_VERSION', '1.0.0' );
+define( 'GBE_VERSION', '1.0.0' );
 
-define( 'SGB_PLUGIN_NAME', 'sgb' );
+define( 'GBE_PLUGIN_NAME', 'gbe' );
 
 /**
  * Plugin base name.
@@ -49,8 +49,7 @@ define( 'SGB_PLUGIN_NAME', 'sgb' );
  * Start at version 1.0.0
  */
 /** @noinspection PhpUnused */
-define( 'SGB_PLUGIN_BASE_NAME', basename( __FILE__ ) );
-
+define( 'GBE_PLUGIN_BASE_NAME', basename( __FILE__ ) );
 
 
 /**
@@ -59,7 +58,7 @@ define( 'SGB_PLUGIN_BASE_NAME', basename( __FILE__ ) );
  * Start at version 1.0.0
  */
 /** @noinspection PhpUnused */
-define( 'SGB_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'GBE_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * Plugin url to access its resources through browser
@@ -67,7 +66,7 @@ define( 'SGB_DIR_PATH', plugin_dir_path( __FILE__ ) );
  * Start at version 1.0.0
  */
 /** @noinspection PhpUnused */
-define( 'SGB_URL_PATH', plugin_dir_url( __FILE__ ) );
+define( 'GBE_URL_PATH', plugin_dir_url( __FILE__ ) );
 
 /**
  * Composer Auto Loader
@@ -76,22 +75,22 @@ require 'vendor/autoload.php';
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-sgb-activator.php
+ * This action is documented in includes/class-gbe-activator.php
  */
-function sgb_activate() {
-	Sgb\Activator::activate();
+function gbe_activate() {
+	GutenbergBlockExamples\Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-sgb-deactivator.php
+ * This action is documented in includes/class-gbe-deactivator.php
  */
-function sgb_deactivate() {
-	Sgb\Deactivator::deactivate();
+function gbe_deactivate() {
+	GutenbergBlockExamples\Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'sgb_activate' );
-register_deactivation_hook( __FILE__, 'sgb_deactivate' );
+register_activation_hook( __FILE__, 'gbe_activate' );
+register_deactivation_hook( __FILE__, 'gbe_deactivate' );
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
@@ -106,11 +105,11 @@ register_deactivation_hook( __FILE__, 'sgb_deactivate' );
  *
  * @since    1.0.0
  */
-function run_sgb() {
+function run_gbe() {
 
-	$plugin = new Sgb\Init();
+	$plugin = new GutenbergBlockExamples\Init();
 	$plugin->run();
 
 }
 
-run_sgb();
+run_gbe();

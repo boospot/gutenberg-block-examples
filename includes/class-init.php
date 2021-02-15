@@ -1,6 +1,6 @@
 <?php
 
-namespace Sgb;
+namespace GutenbergBlockExamples;
 
 /**
  * The file that defines the core plugin class
@@ -11,8 +11,8 @@ namespace Sgb;
  * @link       https://booskills.com/rao
  * @since      1.0.0
  *
- * @package    Sgb
- * @subpackage Sgb/includes
+ * @package    GutenbergBlockExamples
+ * @subpackage GutenbergBlockExamples/includes
  */
 
 /**
@@ -25,8 +25,8 @@ namespace Sgb;
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Sgb
- * @subpackage Sgb/includes
+ * @package    GutenbergBlockExamples
+ * @subpackage GutenbergBlockExamples/includes
  * @author     Rao <rao@booskills.com>
  */
 class Init {
@@ -71,15 +71,15 @@ class Init {
 	public function __construct() {
 
 
-		if ( defined( 'SGB_VERSION' ) ) {
-			$this->version = SGB_VERSION;
+		if ( defined( 'GBE_VERSION' ) ) {
+			$this->version = GBE_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		if ( defined( 'SGB_PLUGIN_NAME' ) ) {
-			$this->plugin_name = SGB_PLUGIN_NAME;
+		if ( defined( 'GBE_PLUGIN_NAME' ) ) {
+			$this->plugin_name = GBE_PLUGIN_NAME;
 		} else {
-			$this->plugin_name = 'sgb';
+			$this->plugin_name = 'gbe';
 		}
 
 
@@ -90,7 +90,7 @@ class Init {
 		$this->define_blocks_hooks();
 		$this->define_taxonomy_hooks();
 
-		do_action( 'sgb_init_construct' );
+		do_action( 'gbe_init_construct' );
 
 	}
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace Sgb;
+namespace GutenbergBlockExamples;
 // exit if file is called directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // if class already defined, bail out
-if ( class_exists( 'Sgb\Blocks' ) ) {
+if ( class_exists( 'GutenbergBlockExamples\Blocks' ) ) {
 	return;
 }
 
@@ -15,8 +15,8 @@ if ( class_exists( 'Sgb\Blocks' ) ) {
 /**
  * This class will create meta boxes for Shortcodes
  *
- * @package    Sgb
- * @subpackage Sgb/includes
+ * @package    GutenbergBlockExamples
+ * @subpackage GutenbergBlockExamples/includes
  */
 class Blocks {
 
@@ -66,9 +66,9 @@ class Blocks {
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 
-		$this->editor_script_handle = 'sgb-block-editor-script';
-		$this->editor_style_handle  = 'sgb-block-editor-style';
-		$this->public_style_handle  = 'sgb-block-style';
+		$this->editor_script_handle = 'gbe-block-editor-script';
+		$this->editor_style_handle  = 'gbe-block-editor-style';
+		$this->public_style_handle  = 'gbe-block-style';
 
 	}
 
@@ -93,7 +93,7 @@ class Blocks {
 	 */
 	public function get_build_url( $file_name_with_sub_dir ) {
 
-		return SGB_URL_PATH . trailingslashit( 'build' ) . $file_name_with_sub_dir;
+		return GBE_URL_PATH . trailingslashit( 'build' ) . $file_name_with_sub_dir;
 
 	}
 
@@ -102,7 +102,7 @@ class Blocks {
 	 */
 	public function get_build_dir( $file_name_with_sub_dir ) {
 
-		return SGB_DIR_PATH . 'build' . DIRECTORY_SEPARATOR . $file_name_with_sub_dir;
+		return GBE_DIR_PATH . 'build' . DIRECTORY_SEPARATOR . $file_name_with_sub_dir;
 
 	}
 
@@ -141,7 +141,7 @@ class Blocks {
 			 * plugin_dir_path( MY_PLUGIN ) . 'languages' ) ). For details see
 			 * https://make.wordpress.org/core/2018/11/09/new-javascript-i18n-support-in-wordpress/
 			 */
-			wp_set_script_translations( $this->editor_script_handle, 'plugin-text-domain' );
+			wp_set_script_translations( $this->editor_script_handle, 'gutenberg-block-examples' );
 		}
 
 		/**
@@ -169,7 +169,7 @@ class Blocks {
 
 		// Array of block created in this plugin.
 		$blocks = [
-			'sgb/message',
+			'gbe/message',
 		];
 
 		// Loop through $blocks and register each block with the same script and styles.
