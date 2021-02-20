@@ -1,0 +1,209 @@
+# Copyright (C) 2021 Rao
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Gutenberg Block Examples 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/gutenberg-block-examples\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-02-20T14:31:38+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: gutenberg-block-examples\n"
+
+#. Plugin Name of the plugin
+msgid "Gutenberg Block Examples"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://boospot.com/"
+msgstr ""
+
+#. Description of the plugin
+msgid "This is a short description of what the plugin does. It's displayed in the WordPress admin area."
+msgstr ""
+
+#. Author of the plugin
+msgid "Rao"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://booskills.com/rao"
+msgstr ""
+
+#: includes/class-blocks.php:86
+msgid "UiKit Components"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/message/index.js:45
+msgid "Skeleton Message"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/message/index.js:51
+msgid "Example block written with ESNext standard and JSX support – build step required."
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card/index.js:45
+msgid "UiKit Card"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-alignment/index.js:54
+#: src/blocks/card-with-inspector-control/index.js:51
+#: src/blocks/card/index.js:51
+msgid "UiKit Card component"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-block-json/edit.js:48
+#: src/blocks/card-with-alignment/edit.js:58
+#: src/blocks/card-with-alignment/index.js:80
+#: src/blocks/card-with-button/edit.js:76
+#: src/blocks/card-with-image/edit.js:66
+#: src/blocks/card-with-image/index.js:70
+#: src/blocks/card-with-inspector-control/edit.js:86
+#: src/blocks/card-with-inspector-control/index.js:77
+#: src/blocks/card/edit.js:48
+#: src/blocks/card/index.js:77
+msgid "Card Title"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-block-json/edit.js:55
+#: src/blocks/card-with-alignment/edit.js:65
+#: src/blocks/card-with-alignment/index.js:81
+#: src/blocks/card-with-button/edit.js:95
+#: src/blocks/card-with-image/edit.js:73
+#: src/blocks/card-with-image/index.js:71
+#: src/blocks/card-with-inspector-control/edit.js:96
+#: src/blocks/card-with-inspector-control/index.js:78
+#: src/blocks/card/edit.js:55
+#: src/blocks/card/index.js:78
+msgid "Card Description"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-block-json/index.js:47
+#: src/blocks/card-with-alignment/index.js:82
+#: src/blocks/card-with-image/index.js:72
+#: src/blocks/card-with-inspector-control/index.js:79
+#: src/blocks/card/index.js:79
+msgid "ui kit UiKit card "
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-block-json/index.js:43
+#: src/blocks/card-block-json/index.js:44
+msgid "UiKit Card with Block JSON"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-block-json/index.js:46
+msgid "Block JSON"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-image/index.js:42
+msgid "UiKit Card with Image"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-image/index.js:48
+msgid "UiKit Card with Image component"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-image/edit.js:56
+msgid "Choose Image"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/index.js:45
+msgid "UiKit Card with Button"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/index.js:51
+msgid "UiKit Card with button component"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/index.js:73
+msgid "Card With Link"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/index.js:74
+msgid "URL or link Component"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/index.js:75
+msgid "ui kit UiKit card button"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/index.js:109
+msgid "Read More"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/edit.js:65
+msgid "Upload Images"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/edit.js:84
+msgid "Job Title"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/edit.js:103
+msgid "Click on the button to edit label"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-button/edit.js:111
+msgid "CLick to Edit Label"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-alignment/index.js:48
+msgid "UiKit Card with Alignment"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-inspector-control/index.js:45
+msgid "UiKit Card with Inspector Control"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-inspector-control/edit.js:45
+msgid "Color Settings"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-inspector-control/edit.js:49
+msgid "Background Color"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-inspector-control/edit.js:60
+msgid "Text Color Settings"
+msgstr ""
+
+#: build/index.js:1
+#: src/blocks/card-with-inspector-control/edit.js:64
+msgid "text Color"
+msgstr ""
+
+#: src/blocks/card-block-json/block.json
+msgctxt "block title"
+msgid "UiKit Card with Block JSON from JSON File"
+msgstr ""
