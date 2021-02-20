@@ -217,6 +217,7 @@ class Blocks {
 		$blocks = [
 			'gbe/message',
 			'gbe/card',
+			'gbe/card-block-example',
 			'gbe/card-with-image',
 			'gbe/card-with-button',
 			'gbe/card-with-alignment',
