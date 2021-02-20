@@ -1,5 +1,4 @@
-import {TextControl} from '@wordpress/components';
-import {Button} from '@wordpress/components';
+import {IconButton} from '@wordpress/components';
 
 /**
  * Retrieves the translation of text.
@@ -18,7 +17,8 @@ import {__} from '@wordpress/i18n';
 import {
     useBlockProps,
     RichText,
-    MediaUpload
+    MediaUpload,
+    URLInputButton
 } from '@wordpress/block-editor';
 
 /**
@@ -43,39 +43,66 @@ export default function Edit({attributes, className, setAttributes}) {
         setAttributes({imgSrc: media.sizes.full.url})
     };
 
+    const blockProps = useBlockProps();
 
     return (
-        <div className={`${className} uk-card uk-card-default`}>
-            <div className="uk-card-media-top">
-                <img src={attributes.imgSrc} alt=""/>
-                <MediaUpload
-                    value={attributes.imgSrc}
-                    onSelect={onImageSelect}
-                    render={({open}) => (
-                        <Button className={'overlay-button button'} onClick={open}>
-                            {__('Choose Image', 'gutenberg-block-examples')}
-                        </Button>
-                    )}
-                />
-            </div>
-            <div className="uk-card-body">
-                <h3 className="uk-card-title">
-                    <RichText
-                        value={attributes.cardTitle}
-                        onChange={cardTitle => setAttributes({cardTitle})}
-                        placeholder={__('Card Title', 'gutenberg-block-examples')}
-                    />
-                </h3>
-                <div className={"uk-card-description"}>
+        <div {...blockProps}>
+            <div className={`uk-card uk-card-default`}>
+                <div className="uk-card-header">
+                    <div className="uk-grid-small uk-flex-middle uk-grid">
+                        <div className="uk-width-auto image-holder">
+                            <img className="uk-border-circle" width={100} height={100} src={attributes.imgSrc}/>
+                            <MediaUpload
+                                value={attributes.imgSrc}
+                                onSelect={onImageSelect}
+                                render={({open}) => (
+                                    <IconButton
+                                        icon={'upload'}
+                                        className={'overlay-button'}
+                                        onClick={open}
+                                        label={__('Upload Images', 'gutenberg-block-examples')}
+                                    />
+
+                                )}
+                            />
+                        </div>
+                        <div className="uk-width-expand">
+                            <h3 className="uk-card-title uk-margin-remove-bottom">
+                                <RichText
+                                    value={attributes.cardTitle}
+                                    onChange={cardTitle => setAttributes({cardTitle})}
+                                    placeholder={__('Card Title', 'gutenberg-block-examples')}
+                                />
+                            </h3>
+                            <p className="uk-text-meta uk-margin-remove-top">
+                                <div className={'job-title'}>
+                                    <RichText
+                                        value={attributes.jobTitle}
+                                        onChange={jobTitle => setAttributes({jobTitle})}
+                                        placeholder={__('Job Title', 'gutenberg-block-examples')}
+                                    />
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="uk-card-body">
                     <RichText
                         value={attributes.cardDescription}
                         onChange={cardDescription => setAttributes({cardDescription})}
                         placeholder={__('Card Description', 'gutenberg-block-examples')}
                     />
                 </div>
+                <div className="uk-card-footer">
+                    <a href="#"
+                       className="gbe-btn-url uk-button uk-button-default">{__('Read More', 'gutenberg-block-examples')}</a>
+                    <URLInputButton
+                        url={attributes.buttonUrl}
+                        onChange={buttonUrl => setAttributes({buttonUrl})}
+                    />
+                </div>
             </div>
         </div>
-
     );
 }
 
