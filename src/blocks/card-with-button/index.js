@@ -75,6 +75,11 @@ registerBlockType('gbe/card-with-button', {
         __('ui kit UiKit card button', 'gutenberg-block-examples')
     ],
 
+    supports: {
+        // align: true
+        align: ['full', 'wide']
+    },
+
     attributes: {
         cardTitle: {
             type: 'string',
@@ -99,6 +104,7 @@ registerBlockType('gbe/card-with-button', {
         },
         buttonLabel: {
             type: 'string',
+            source: 'text',
             selector: '.gbe-btn-url',
             default: __('Read More', 'gutenberg-block-examples')
         },

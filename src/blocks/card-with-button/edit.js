@@ -1,4 +1,6 @@
-import {IconButton} from '@wordpress/components';
+import {
+    IconButton
+} from '@wordpress/components';
 
 /**
  * Retrieves the translation of text.
@@ -37,13 +39,13 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit({attributes, className, setAttributes}) {
+export default function Edit({attributes, className, setAttributes, isSelected}) {
 
     const onImageSelect = media => {
         setAttributes({imgSrc: media.sizes.full.url})
     };
 
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({className: 'gte-custom-class-card-with-button'});
 
     return (
         <div {...blockProps}>
@@ -94,13 +96,19 @@ export default function Edit({attributes, className, setAttributes}) {
                     />
                 </div>
                 <div className="uk-card-footer">
+                    {
+                        isSelected &&
+                        <div className="uk-alert uk-alert-primary uk-text-small">
+                            <a className="uk-alert-close" ukClose={true}></a>
+                            {__('Click on the button to edit label', 'gutenberg-block-examples')}
+                        </div>
+                    }
                     <a href="#"
                        className="gbe-btn-url uk-button uk-button-default">
                         <RichText
                             value={attributes.buttonLabel}
                             onChange={buttonLabel => setAttributes({buttonLabel})}
-                            placeholder={__('Read More', 'gutenberg-block-examples')}
-
+                            placeholder={__('CLick to Edit Label', 'gutenberg-block-examples')}
                         />
                     </a>
                     <URLInputButton
