@@ -65,6 +65,10 @@ registerBlockType('gbe/card', {
      */
     icon: 'smiley',
 
+    supports: {
+        align: ['full', 'wide']
+    },
+
 
     /**
      * Keywords for easy search of Blocks

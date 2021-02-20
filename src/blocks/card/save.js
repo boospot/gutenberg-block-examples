@@ -23,8 +23,13 @@ import {useBlockProps, RichText} from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function Save({attributes, className}) {
-    return <div className={`${className} uk-card uk-card-default uk-card-body`}>
-        <h3 className="uk-card-title"><RichText.Content value={attributes.cardTitle}/></h3>
-        <div className={"uk-card-description"}><RichText.Content value={attributes.cardDescription}/></div>
-    </div>;
+    const blockProps = useBlockProps.save();
+    return (
+        <div {...blockProps}>
+            <div className={`uk-card uk-card-default uk-card-body`}>
+                <h3 className="uk-card-title"><RichText.Content value={attributes.cardTitle}/></h3>
+                <div className={"uk-card-description"}><RichText.Content value={attributes.cardDescription}/></div>
+            </div>
+        </div>
+    );
 }

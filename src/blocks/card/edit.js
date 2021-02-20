@@ -37,21 +37,24 @@ import './editor.scss';
  */
 export default function Edit({attributes, className, setAttributes}) {
 
+    const blockProps = useBlockProps();
     return (
-        <div className={`${className} uk-card uk-card-default uk-card-body`}>
-            <h3 className="uk-card-title">
-                <RichText
-                    value={attributes.cardTitle}
-                    onChange={cardTitle => setAttributes({cardTitle})}
-                    placeholder={__('Card Title', 'gutenberg-block-examples')}
-                />
-            </h3>
-            <div className={"uk-card-description"}>
-                <RichText
-                    value={attributes.cardDescription}
-                    onChange={cardDescription => setAttributes({cardDescription})}
-                    placeholder={__('Card Description', 'gutenberg-block-examples')}
-                />
+        <div {...blockProps}>
+            <div className={`uk-card uk-card-default uk-card-body`}>
+                <h3 className="uk-card-title">
+                    <RichText
+                        value={attributes.cardTitle}
+                        onChange={cardTitle => setAttributes({cardTitle})}
+                        placeholder={__('Card Title', 'gutenberg-block-examples')}
+                    />
+                </h3>
+                <div className={"uk-card-description"}>
+                    <RichText
+                        value={attributes.cardDescription}
+                        onChange={cardDescription => setAttributes({cardDescription})}
+                        placeholder={__('Card Description', 'gutenberg-block-examples')}
+                    />
+                </div>
             </div>
         </div>
 
