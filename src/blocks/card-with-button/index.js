@@ -97,7 +97,12 @@ registerBlockType('gbe/card-with-button', {
             attribute: 'src',
             selector: '.uk-border-circle',
         },
-        buttonUrl:{
+        buttonLabel: {
+            type: 'string',
+            selector: '.gbe-btn-url',
+            default: __('Read More', 'gutenberg-block-examples')
+        },
+        buttonUrl: {
             type: 'string',
             source: 'attribute',
             attribute: 'href',

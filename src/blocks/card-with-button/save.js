@@ -47,7 +47,7 @@ export default function Save({attributes, className}) {
                     <div className={"uk-card-description"}><RichText.Content value={attributes.cardDescription}/></div>
                 </div>
                 <div className="uk-card-footer">
-                    <a href={attributes.buttonUrl} className="gbe-btn-url uk-button uk-button-default">{__('Read More', 'gutenberg-block-examples')}</a>
+                    <a href={attributes.buttonUrl} className="gbe-btn-url uk-button uk-button-default"><RichText.Content value={attributes.buttonLabel} /></a>
                 </div>
             </div>
         </div>

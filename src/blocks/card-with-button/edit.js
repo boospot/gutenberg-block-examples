@@ -95,7 +95,14 @@ export default function Edit({attributes, className, setAttributes}) {
                 </div>
                 <div className="uk-card-footer">
                     <a href="#"
-                       className="gbe-btn-url uk-button uk-button-default">{__('Read More', 'gutenberg-block-examples')}</a>
+                       className="gbe-btn-url uk-button uk-button-default">
+                        <RichText
+                            value={attributes.buttonLabel}
+                            onChange={buttonLabel => setAttributes({buttonLabel})}
+                            placeholder={__('Read More', 'gutenberg-block-examples')}
+
+                        />
+                    </a>
                     <URLInputButton
                         url={attributes.buttonUrl}
                         onChange={buttonUrl => setAttributes({buttonUrl})}
