@@ -92,6 +92,9 @@ registerBlockType('gbe/card-with-inspector-control', {
         },
         backgroundColor: {
             type: 'string'
+        },
+        textColor: {
+            type: 'string'
         }
     },
 

@@ -28,9 +28,18 @@ export default function Save({attributes, className}) {
         <div {...blockProps}>
             <div
                 className={`uk-card uk-card-default uk-card-body`}
-                style={{backgroundColor: attributes.backgroundColor}}
+                style={{
+                    backgroundColor: attributes.backgroundColor,
+                    color: attributes.textColor
+                }}
             >
-                <h3 className="uk-card-title"><RichText.Content value={attributes.cardTitle}/></h3>
+                <h3 className="uk-card-title"
+                    style={{
+                        color: attributes.textColor
+                    }}
+                >
+                    <RichText.Content value={attributes.cardTitle}/>
+                </h3>
                 <div className={"uk-card-description"}><RichText.Content value={attributes.cardDescription}/></div>
             </div>
         </div>

@@ -57,17 +57,36 @@ export default function Edit({attributes, className, setAttributes}) {
                     </div>
                 </div>
             </PanelBody>
+            <PanelBody title={__('Text Color Settings', 'gutenberg-block-examples')}>
+                <div className="components-base-control">
+                    <div className="components-base-control__field">
+                        <label className="components-base-control__label">
+                            {__('text Color', 'gutenberg-block-examples')}
+                        </label>
+                        <ColorPalette
+                            value={attributes.textColor}
+                            onChange={textColor => setAttributes({textColor})}
+                        />
+                    </div>
+                </div>
+            </PanelBody>
         </InspectorControls>,
         <div {...blockProps}>
             <div
                 className={`uk-card uk-card-default uk-card-body`}
-                style={{backgroundColor: attributes.backgroundColor}}
+                style={{
+                    backgroundColor: attributes.backgroundColor,
+                    color: attributes.textColor
+                }}
             >
                 <h3 className="uk-card-title">
                     <RichText
                         value={attributes.cardTitle}
                         onChange={cardTitle => setAttributes({cardTitle})}
                         placeholder={__('Card Title', 'gutenberg-block-examples')}
+                        style={{
+                            color: attributes.textColor
+                        }}
                     />
                 </h3>
                 <div className={"uk-card-description"}>
