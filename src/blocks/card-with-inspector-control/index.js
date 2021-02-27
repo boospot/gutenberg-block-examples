@@ -95,6 +95,10 @@ registerBlockType('gbe/card-with-inspector-control', {
         },
         textColor: {
             type: 'string'
+        },
+        descriptionAlignment: {
+            type: 'string',
+            default: 'left'
         }
     },
 

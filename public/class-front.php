@@ -77,7 +77,7 @@ class Front {
 
 
 		// Ui-Kit https://getuikit.com/docs/installation
-		wp_enqueue_style( 'ui-kit', 'https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css', array(), '3.6.16', 'all' );
+		wp_enqueue_style( 'ui-kit', trailingslashit( GBE_URL_PATH ) . 'public/css/uikit.min.css', array(), '3.6.16', 'all' );
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/public.css', array(), $this->version, 'all' );
 
@@ -104,10 +104,10 @@ class Front {
 		 */
 
 		// Ui-Kit https://getuikit.com/docs/installation
-		wp_enqueue_script( 'ui-kit', 'https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit.min.js', array(), '3.6.16', true );
+		wp_enqueue_script( 'ui-kit', trailingslashit( GBE_URL_PATH ) . 'public/js/uikit.min.js', array(), '3.6.16', true );
 
 		// Ui-Kit Icons https://getuikit.com/docs/installation
-		wp_enqueue_script( 'ui-kit-icons', 'https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit-icons.min.js', array(), '3.6.16', true );
+		wp_enqueue_script( 'ui-kit-icons', trailingslashit( GBE_URL_PATH ) . 'public/js/uikit-icons.min.js', array(), '3.6.16', true );
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/public.js', array( 'jquery' ), $this->version, true );
 

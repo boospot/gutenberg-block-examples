@@ -30,17 +30,19 @@ export default function Save({attributes, className}) {
                 className={`uk-card uk-card-default uk-card-body`}
                 style={{
                     backgroundColor: attributes.backgroundColor,
-                    color: attributes.textColor
+                    color: attributes.textColor,
+                    textAlign: attributes.descriptionAlignment
                 }}
             >
                 <h3 className="uk-card-title"
                     style={{
-                        color: attributes.textColor
+                        color: attributes.textColor,
                     }}
                 >
                     <RichText.Content value={attributes.cardTitle}/>
                 </h3>
-                <div className={"uk-card-description"}><RichText.Content value={attributes.cardDescription}/></div>
+                <div className={"uk-card-description"}
+                ><RichText.Content value={attributes.cardDescription}/></div>
             </div>
         </div>
     );

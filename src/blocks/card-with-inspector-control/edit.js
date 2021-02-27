@@ -1,4 +1,12 @@
-import {TextControl, PanelBody, ColorIndicator} from '@wordpress/components';
+import {
+    TextControl,
+    PanelBody,
+    ColorIndicator,
+    RadioControl,
+    ButtonGroup,
+    Button,
+    IconButton
+} from '@wordpress/components';
 /**
  * Retrieves the translation of text.
  *
@@ -18,7 +26,10 @@ import {
     useBlockProps,
     RichText,
     InspectorControls,
-    ColorPalette
+    ColorPalette,
+    BlockControls,
+    AlignmentToolbar
+
 } from '@wordpress/block-editor';
 
 /**
@@ -40,6 +51,11 @@ import './editor.scss';
 export default function Edit({attributes, className, setAttributes}) {
 
     const blockProps = useBlockProps();
+
+    const isSelectedButton = (alignment = 'left') => {
+        return alignment === attributes.descriptionAlignment
+    };
+
     return [
         <InspectorControls>
             <PanelBody title={__('Color Settings', 'gutenberg-block-examples')}>
@@ -53,7 +69,6 @@ export default function Edit({attributes, className, setAttributes}) {
                             value={attributes.backgroundColor}
                             onChange={backgroundColor => setAttributes({backgroundColor})}
                         />
-
                     </div>
                 </div>
             </PanelBody>
@@ -70,13 +85,79 @@ export default function Edit({attributes, className, setAttributes}) {
                     </div>
                 </div>
             </PanelBody>
+            <PanelBody title={__('Text Settings', 'gutenberg-block-examples')}>
+                <div className="components-base-control">
+                    <div className="components-base-control__field">
+                        <label className="components-base-control__label">
+                            {__('Text Alignment', 'gutenberg-block-examples')}
+                        </label>
+                        <RadioControl
+                            selected={attributes.descriptionAlignment}
+                            options={[
+                                {'label': __('Left', 'gutenberg-block-examples'), 'value': 'left'},
+                                {'label': __('Center', 'gutenberg-block-examples'), 'value': 'center'},
+                                {'label': __('Right', 'gutenberg-block-examples'), 'value': 'right'}
+                            ]}
+                            onChange={descriptionAlignment => {
+                                setAttributes({descriptionAlignment})
+                            }}
+                        />
+                        <ButtonGroup>
+                            <Button
+                                isPrimary={isSelectedButton('left')}
+                                onClick={() => setAttributes({descriptionAlignment: 'left'})}
+                            >{__('Left', 'gutenberg-block-examples')}</Button>
+                            <Button
+                                isPrimary={isSelectedButton('center')}
+                                onClick={() => setAttributes({descriptionAlignment: 'center'})}
+                            >{__('Center', 'gutenberg-block-examples')}</Button>
+                            <Button
+                                isPrimary={isSelectedButton('right')}
+                                onClick={() => setAttributes({descriptionAlignment: 'right'})}
+                            >{__('Right', 'gutenberg-block-examples')}</Button>
+                        </ButtonGroup>
+                        <br/>
+                        <br/>
+                        <ButtonGroup>
+                            <IconButton
+                                icon={'editor-alignleft'}
+                                isPrimary={isSelectedButton('left')}
+                                onClick={() => setAttributes({descriptionAlignment: 'left'})}
+                                label="More"
+                            />
+                            <IconButton
+                                icon={'editor-aligncenter'}
+                                isPrimary={isSelectedButton('center')}
+                                onClick={() => setAttributes({descriptionAlignment: 'center'})}
+                                label="More"
+                            />
+                            <IconButton
+                                icon={'editor-alignright'}
+                                isPrimary={isSelectedButton('right')}
+                                onClick={() => setAttributes({descriptionAlignment: 'right'})}
+                                label="More"
+                            />
+                        </ButtonGroup>
+
+                    </div>
+                </div>
+            </PanelBody>
         </InspectorControls>,
         <div {...blockProps}>
+            <BlockControls>
+                <AlignmentToolbar
+                    value={attributes.descriptionAlignment}
+                    onChange={descriptionAlignment => {
+                        setAttributes({descriptionAlignment})
+                    }}
+                />
+            </BlockControls>
             <div
                 className={`uk-card uk-card-default uk-card-body`}
                 style={{
                     backgroundColor: attributes.backgroundColor,
-                    color: attributes.textColor
+                    color: attributes.textColor,
+                    textAlign: attributes.descriptionAlignment
                 }}
             >
                 <h3 className="uk-card-title">
