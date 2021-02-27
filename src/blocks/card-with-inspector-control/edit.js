@@ -52,7 +52,7 @@ export default function Edit({attributes, className, setAttributes}) {
 
     const blockProps = useBlockProps();
 
-    const isSelectedButton = (alignment = 'left') => {
+    const isSelectedAlignment = (alignment = 'left') => {
         return alignment === attributes.descriptionAlignment
     };
 
@@ -104,15 +104,15 @@ export default function Edit({attributes, className, setAttributes}) {
                         />
                         <ButtonGroup>
                             <Button
-                                isPrimary={isSelectedButton('left')}
+                                isPrimary={isSelectedAlignment('left')}
                                 onClick={() => setAttributes({descriptionAlignment: 'left'})}
                             >{__('Left', 'gutenberg-block-examples')}</Button>
                             <Button
-                                isPrimary={isSelectedButton('center')}
+                                isPrimary={isSelectedAlignment('center')}
                                 onClick={() => setAttributes({descriptionAlignment: 'center'})}
                             >{__('Center', 'gutenberg-block-examples')}</Button>
                             <Button
-                                isPrimary={isSelectedButton('right')}
+                                isPrimary={isSelectedAlignment('right')}
                                 onClick={() => setAttributes({descriptionAlignment: 'right'})}
                             >{__('Right', 'gutenberg-block-examples')}</Button>
                         </ButtonGroup>
@@ -121,19 +121,19 @@ export default function Edit({attributes, className, setAttributes}) {
                         <ButtonGroup>
                             <IconButton
                                 icon={'editor-alignleft'}
-                                isPrimary={isSelectedButton('left')}
+                                isPrimary={isSelectedAlignment('left')}
                                 onClick={() => setAttributes({descriptionAlignment: 'left'})}
                                 label="More"
                             />
                             <IconButton
                                 icon={'editor-aligncenter'}
-                                isPrimary={isSelectedButton('center')}
+                                isPrimary={isSelectedAlignment('center')}
                                 onClick={() => setAttributes({descriptionAlignment: 'center'})}
                                 label="More"
                             />
                             <IconButton
                                 icon={'editor-alignright'}
-                                isPrimary={isSelectedButton('right')}
+                                isPrimary={isSelectedAlignment('right')}
                                 onClick={() => setAttributes({descriptionAlignment: 'right'})}
                                 label="More"
                             />
