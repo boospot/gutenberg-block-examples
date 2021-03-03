@@ -70,10 +70,6 @@ export default function Edit({attributes, className, setAttributes}) {
                             onChange={backgroundColor => setAttributes({backgroundColor})}
                         />
                     </div>
-                </div>
-            </PanelBody>
-            <PanelBody title={__('Text Color Settings', 'gutenberg-block-examples')}>
-                <div className="components-base-control">
                     <div className="components-base-control__field">
                         <label className="components-base-control__label">
                             {__('text Color', 'gutenberg-block-examples')}
