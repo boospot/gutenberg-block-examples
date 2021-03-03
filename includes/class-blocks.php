@@ -222,7 +222,7 @@ class Blocks {
 			'gbe/card-with-button',
 			'gbe/card-with-alignment',
 			'gbe/card-with-inspector-control',
-			'gbe/card-with-style-variation'
+			'gbe/card-with-style'
 		];
 
 		// Loop through $blocks and register each block with the same script and styles.

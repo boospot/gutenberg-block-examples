@@ -32,7 +32,7 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType('gbe/card-with-style-variation', {
+registerBlockType('gbe/card-with-style', {
     /**
      * @see https://make.wordpress.org/core/2020/11/18/block-api-version-2/
      */
@@ -42,7 +42,7 @@ registerBlockType('gbe/card-with-style-variation', {
      * This is the display title for your block, which can be translated with `i18n` functions.
      * The block inserter will show this name.
      */
-    title: __('UiKit Card with Style Variation', 'gutenberg-block-examples'),
+    title: __('UiKit Card with Style', 'gutenberg-block-examples'),
 
     /**
      * This is a short description for your block, can be translated with `i18n` functions.
