@@ -97,7 +97,7 @@ class Blocks {
 						// Required
 						'slug'  => $block_category['slug'],
 						// Required
-						'icon'  =>  '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M19 13H5v-2h14v2z" /></svg>',
+						'icon'  => '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M19 13H5v-2h14v2z" /></svg>',
 						// Slug of a WordPress Dashicon or custom SVG
 					),
 				)
@@ -207,8 +207,6 @@ class Blocks {
 	/**
 	 * Registers all block assets so that they can be enqueued through Gutenberg in
 	 * the corresponding context.
-	 *
-	 *
 	 */
 	public function register_blocks() {
 
@@ -240,5 +238,158 @@ class Blocks {
 
 	}
 
+
+	/**
+	 * Registers all Dynamic Block
+	 */
+	public function register_dynamic_blocks() {
+
+		// Array of block created in this plugin.
+		$blocks = [
+			[
+				'name'            => 'gbe/latest-post-card',
+				'render_callback' => [ $this, 'block_render_callback_latest_post_card' ]
+			],
+			[
+				'name'            => 'gbe/dynamic-post-card',
+				'render_callback' => [ $this, 'block_render_callback_dynamic_post_card' ]
+			]
+		];
+
+		// Loop through $blocks and register each block with the same script and styles.
+		foreach ( $blocks as $block ) {
+			register_block_type( $block['name'], array(
+				'editor_script'   => $this->editor_script_handle,
+				'editor_style'    => $this->editor_style_handle,
+				'style'           => $this->public_style_handle,
+				'render_callback' => $block['render_callback']
+			) );
+		}
+
+
+	}
+
+	/**
+	 * Render Callback for the block
+	 *
+	 * @block gbe/latest_post_card
+	 *
+	 */
+	public function block_render_callback_latest_post_card( $attributes, $content ) {
+
+		global $post;
+
+		$posts = wp_get_recent_posts( array(
+			'numberposts' => 1,
+			'post_status' => 'publish'
+		) );
+
+
+		if ( 0 === count( $posts ) ) {
+			return __( 'No Posts', 'gutenberg-block-examples' );
+		}
+		$post_id = absint( $posts[0]['ID'] );
+
+		if ( ! $post_id ) {
+			return __( 'No Post Found', 'gutenberg-block-examples' );
+		}
+
+		$post = get_post( $post_id );
+
+		setup_postdata( $post );
+
+		$html_format = '<div class="uk-card uk-card-default">
+            <div class="uk-card-header">
+                <div class="uk-card-media-top">%post_image</div>
+                <div class="uk-grid-small uk-flex-middle uk-grid">
+                    <div class="uk-width-expand"><h3 class="uk-card-title uk-margin-remove-bottom">%post_title</h3>
+                        <p class="uk-text-meta uk-margin-remove-top">
+                        	<div class="job-title">%post_date</div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-card-body">%post_excerpt</div>
+            <div class="uk-card-footer"><a href="%post_link">%read_more_label</a></div>
+        </div>';
+
+		$output = strtr( $html_format,
+			[
+				'%post_image'      => get_the_post_thumbnail( $post, 'full' ),
+				'%post_date'       => get_the_date(),
+				'%post_title'      => get_the_title(),
+				'%post_excerpt'    => get_the_excerpt(),
+				'%post_link'       => get_the_permalink(),
+				'%read_more_label' => esc_html__( 'Read More', 'gutenberg-block-examples' ),
+			]
+		);
+
+		wp_reset_postdata();
+
+		return $output;
+
+	}
+
+
+	/**
+	 * Render Callback for the block
+	 *
+	 * @block gbe/dynamic_post_card
+	 *
+	 */
+	public function block_render_callback_dynamic_post_card( $attributes, $content ) {
+
+		global $post;
+
+		$posts = wp_get_recent_posts( array(
+			'numberposts' => 1,
+			'post_status' => 'publish'
+		) );
+
+
+		if ( 0 === count( $posts ) ) {
+			return __( 'No Posts', 'gutenberg-block-examples' );
+		}
+		$post_id = absint( $posts[0]['ID'] );
+
+		if ( ! $post_id ) {
+			return __( 'No Post Found', 'gutenberg-block-examples' );
+		}
+
+		$post = get_post( $post_id );
+
+		setup_postdata( $post );
+
+		$html_format = '<div class="uk-card uk-card-default">
+            <div class="uk-card-header">
+                <div class="uk-card-media-top">%post_image</div>
+                <div class="uk-grid-small uk-flex-middle uk-grid">
+                    <div class="uk-width-expand"><h3 class="uk-card-title uk-margin-remove-bottom">%post_title</h3>
+                        <p class="uk-text-meta uk-margin-remove-top">
+                        	<div class="job-title">%post_date</div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-card-body">%post_excerpt</div>
+            <div class="uk-card-footer"><a href="%post_link">%read_more_label</a></div>
+        </div>';
+
+		$output = strtr( $html_format,
+			[
+				'%post_image'      => get_the_post_thumbnail( $post, 'full' ),
+				'%post_date'       => get_the_date(),
+				'%post_title'      => get_the_title(),
+				'%post_excerpt'    => get_the_excerpt(),
+				'%post_link'       => get_the_permalink(),
+				'%read_more_label' => esc_html__( 'Read More', 'gutenberg-block-examples' ),
+			]
+		);
+
+		wp_reset_postdata();
+
+		return $output;
+
+	}
 
 }
