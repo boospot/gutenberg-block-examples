@@ -20,7 +20,14 @@ import {__} from '@wordpress/i18n';
 import {
     useBlockProps,
     RichText,
+    InspectorControls
 } from '@wordpress/block-editor';
+
+
+import {
+    PanelBody,
+    SelectControl
+} from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -42,7 +49,7 @@ export default withSelect(
     (select) => {
 
         const postArgs = {
-            per_page: 1,
+            per_page: -1,
             _embed: true,
         };
 
@@ -53,41 +60,9 @@ export default withSelect(
 )(
     (props) => {
 
-        // console.log(props);
-        const {posts, className} = props;
+        const {posts, className, attributes, setAttributes} = props;
 
         const blockProps = useBlockProps();
-
-        // Wait for Posts to be returned
-        if (!posts) {
-            return (
-                <div {...blockProps}>
-                    {__('Loading', 'gutenberg-block-examples')}
-                </div>
-            )
-        }
-
-        // if we have posts returned with no record
-        if (posts && posts.length === 0) {
-            return (
-                <div {...blockProps}>
-                    {__('No Posts', 'gutenberg-block-examples')}
-                </div>
-            )
-        }
-
-        // Till this point, we have the posts available, so get the first post from array of posts
-        const post = posts[0];
-        console.log(post);
-
-        // If due to any reason, there is no post in post array
-        if (!post) {
-            return (
-                <div {...blockProps}>
-                    {__('No Post Found', 'gutenberg-block-examples')}
-                </div>
-            )
-        }
 
         const getImageUrl = function (post) {
 
@@ -107,7 +82,100 @@ export default withSelect(
             return new Date(post.date).toDateString();
         }
 
+        const getSelectPostOptions = function (posts) {
+            const options = [];
+            for (const index in posts) {
+                options.push(
+                    {
+                        'label': posts[index].title.rendered,
+                        'value': posts[index].id
+                    }
+                )
+
+            }
+            return options;
+        }
+
+        /**
+         * Create a component that can be reused even if no posts are found.
+         * @returns {JSX.Element}
+         */
+        const inspector = function () {
+            return (
+                <InspectorControls>
+                    <PanelBody title={__('Post Settings', 'gutenberg-block-examples')}>
+                        <div className="components-base-control">
+                            <div className="components-base-control__field">
+                                <SelectControl
+                                    value={attributes.selectedPost}
+                                    onChange={selectedPost => setAttributes({selectedPost})}
+                                    label={__('Selected Post', 'gutenberg-block-examples')}
+                                    options={getSelectPostOptions(posts)}
+                                />
+                            </div>
+                        </div>
+                    </PanelBody>
+                </InspectorControls>
+            )
+
+        }
+
+        // Wait for Posts to be returned
+        if (!posts) {
+            return [
+                inspector(),
+                <div {...blockProps}>
+                    {__('Loading', 'gutenberg-block-examples')}
+                </div>
+            ]
+        }
+
+        // if we have posts returned with no record
+        if (posts && posts.length === 0) {
+            return [
+                inspector(),
+                <div {...blockProps}>
+                    {__('No Posts', 'gutenberg-block-examples')}
+                </div>
+            ]
+        }
+
+        if (!attributes.selectedPost) {
+            return [
+                inspector(),
+                <div {...blockProps}>
+                    <div className="uk-card uk-card-body uk-width-1-2 uk-margin-auto">
+                        <p className="uk-card-title">
+                            {__('First select a post from panel to display', 'gutenberg-block-examples')}
+                        </p>
+                        <SelectControl
+                            value={attributes.selectedPost}
+                            onChange={selectedPost => setAttributes({selectedPost})}
+                            label={__('Selected Post', 'gutenberg-block-examples')}
+                            options={getSelectPostOptions(posts)}
+                        />
+                    </div>
+                </div>
+            ]
+        }
+
+        // Till this point, we have the posts available, so get the first post from array of posts
+        const post = posts.filter(obj => {
+            return obj.id === parseInt(attributes.selectedPost);
+        }).pop();
+
+        // If due to any reason, there is no post in post array
+        if (!post) {
+            return (
+                <div {...blockProps}>
+                    {__('No Post Found', 'gutenberg-block-examples')}
+                </div>
+            )
+        }
+
+
         return [
+            inspector(),
             <div {...blockProps}>
                 <div className={`uk-card uk-card-default`}>
                     <div className="uk-card-header">

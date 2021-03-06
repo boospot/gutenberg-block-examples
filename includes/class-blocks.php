@@ -251,8 +251,8 @@ class Blocks {
 				'render_callback' => [ $this, 'block_render_callback_latest_post_card' ]
 			],
 			[
-				'name'            => 'gbe/dynamic-post-card',
-				'render_callback' => [ $this, 'block_render_callback_dynamic_post_card' ]
+				'name'            => 'gbe/selected-post-card',
+				'render_callback' => [ $this, 'block_render_callback_selected_post_card' ]
 			]
 		];
 
@@ -272,7 +272,7 @@ class Blocks {
 	/**
 	 * Render Callback for the block
 	 *
-	 * @block gbe/latest_post_card
+	 * @block gbe/latest-post-card
 	 *
 	 */
 	public function block_render_callback_latest_post_card( $attributes, $content ) {
@@ -334,23 +334,14 @@ class Blocks {
 	/**
 	 * Render Callback for the block
 	 *
-	 * @block gbe/dynamic_post_card
+	 * @block gbe/selected-post-card
 	 *
 	 */
-	public function block_render_callback_dynamic_post_card( $attributes, $content ) {
+	public function block_render_callback_selected_post_card( $attributes, $content ) {
 
 		global $post;
 
-		$posts = wp_get_recent_posts( array(
-			'numberposts' => 1,
-			'post_status' => 'publish'
-		) );
-
-
-		if ( 0 === count( $posts ) ) {
-			return __( 'No Posts', 'gutenberg-block-examples' );
-		}
-		$post_id = absint( $posts[0]['ID'] );
+		$post_id = absint( $attributes['selectedPost'] ?? 0 );
 
 		if ( ! $post_id ) {
 			return __( 'No Post Found', 'gutenberg-block-examples' );

@@ -32,38 +32,25 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType('gbe/dynamic-post-card', {
-     apiVersion: 2,
-    title: __('UiKit Dynamic Post Card', 'gutenberg-block-examples'),
+registerBlockType('gbe/selected-post-card', {
+    apiVersion: 2,
+    title: __('UiKit Selected Post Card', 'gutenberg-block-examples'),
     description: __(
-        'UiKit Dynamic Post Card',
+        'UiKit Selected Dynamic Post Card',
         'gutenberg-block-examples'
     ),
     category: 'uikit',
     icon: 'smiley',
-
+    keywords: [
+        __('Uikit selected dynamic post card', 'gutenberg-block-examples'),
+    ],
     attributes: {
-        cardTitle: {
+        selectedPost: {
             type: 'string',
-            source: 'html',
-            selector: '.uk-card-title',
-        },
-        cardDescription: {
-            type: 'array',
-            source: 'children',
-            selector: '.uk-card-description',
-        },
-        backgroundColor: {
-            type: 'string'
-        },
-        textColor: {
-            type: 'string'
-        },
-        descriptionAlignment: {
-            type: 'string',
-            default: 'left'
         }
     },
+
+
 
     /**
      * @see ./edit.js

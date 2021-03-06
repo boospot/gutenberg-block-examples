@@ -10,4 +10,4 @@ import "./blocks/card-with-alignment";
 import "./blocks/card-with-inspector-control";
 import "./blocks/card-with-style";
 import "./blocks/latest-post-card";
-import "./blocks/dynamic-post-card";
+import "./blocks/selected-post-card";
