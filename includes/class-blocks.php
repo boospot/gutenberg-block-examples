@@ -114,8 +114,7 @@ class Blocks {
 	 * Enqueue assets for Editor (admin) and Public (frontend) side
 	 * @hooked  enqueue_block_assets
 	 */
-	public
-	function enqueue_block_assets() {
+	public function enqueue_block_assets() {
 
 		$style_css = 'style-index.css';
 		wp_enqueue_style(
@@ -130,10 +129,7 @@ class Blocks {
 	/**
 	 * Get Build URL path
 	 */
-	public
-	function get_build_url(
-		$file_name_with_sub_dir
-	) {
+	public function get_build_url( $file_name_with_sub_dir ) {
 
 		return GBE_URL_PATH . trailingslashit( 'build' ) . $file_name_with_sub_dir;
 
@@ -142,10 +138,7 @@ class Blocks {
 	/**
 	 * Get Build Dir path
 	 */
-	public
-	function get_build_dir(
-		$file_name_with_sub_dir
-	) {
+	public function get_build_dir( $file_name_with_sub_dir ) {
 
 		return GBE_DIR_PATH . 'build' . DIRECTORY_SEPARATOR . $file_name_with_sub_dir;
 
@@ -155,8 +148,7 @@ class Blocks {
 	 * Enqueue CSS and JS assets for Editor
 	 * @hooked  enqueue_block_editor_assets
 	 */
-	public
-	function enqueue_block_editor_assets() {
+	public function enqueue_block_editor_assets() {
 
 		$script_asset_path = $this->get_build_dir( 'index.asset.php' );
 
@@ -209,7 +201,6 @@ class Blocks {
 	 * the corresponding context.
 	 */
 	public function register_blocks() {
-
 
 		// Array of block created in this plugin.
 		$blocks = [
