@@ -209,6 +209,7 @@ class Blocks {
 			'gbe/card-block-example',
 			'gbe/card-with-image',
 			'gbe/card-with-button',
+			'gbe/card-with-inner-blocks',
 			'gbe/card-with-alignment',
 			'gbe/card-with-inspector-control',
 			'gbe/card-with-style'
